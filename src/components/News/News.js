@@ -5,8 +5,23 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import './News.css';
+import DetailsIcon from '@mui/icons-material/Details';
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles({
+    btn: {
+      background: 'linear-gradient(45deg, blue 30%, violet 90%)',
+      border: '10px solid black',
+      boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+      height: 40,
+      padding: '0 30px',
+      color: 'yellow'
+    }
+  });
 
 const News = (props) => {
+    const classes = useStyles();
+
     const { title, description, urlToImage, url} = props.article;
     return (
         <>
@@ -28,11 +43,15 @@ const News = (props) => {
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    <a href={url}>
-                    <Button size="small" variant="contained" >
+                    <Button 
+                    className={classes.btn}
+                    href={url} 
+                    size="small" 
+                    variant="contained" 
+                    startIcon={<DetailsIcon/>}
+                    >
                     Details...
                     </Button>
-                    </a>
                 </CardActions>
             </Card>
         </>
